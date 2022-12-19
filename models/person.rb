@@ -1,9 +1,6 @@
 class Person
-  # class Vars
-  @@under_age = 18
-
   # Constructor
-  def initialize(name = 'Unkown', parent_permission = true, age)
+  def initialize(age, name = 'Unkown', parent_permission: true)
     @id = Random.rand(1..1000)
     @name = name
     @age = age
@@ -12,16 +9,13 @@ class Person
 
   # getters
   attr_reader :id
-  attr_reader :name
-  attr_reader :age
 
-  # setters
-  attr_writer :name
-  attr_writer :age
+  # accessor
+  attr_accessor :name, :age
 
   # Privet Methods
-  def is_of_age?
-    @age >= @@under_age
+  def of_age?
+    @age >= 18
   end
 
   private :is_of_age?
