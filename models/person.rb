@@ -18,7 +18,7 @@ class Person
     @age >= 18
   end
 
-  private :is_of_age?
+  private :of_age?
 
   # Public methods
   def can_use_services?
