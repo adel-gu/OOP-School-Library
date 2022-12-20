@@ -1,8 +1,11 @@
 require_relative 'nameable'
+require_relative 'capitalize_decorator'
+require_relative 'trimmer_decorator'
 
 class Person < Nameable
   # Constructor
   def initialize(age, name = 'Unkown', parent_permission: true)
+    super()
     @id = Random.rand(1..1000)
     @name = name
     @age = age

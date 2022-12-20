@@ -2,6 +2,6 @@ require_relative 'base_decorator'
 
 class CapitalizeDecorator < BaseDecorato
   def correct_name
-    super.capitalize()
+    super.capitalize
   end
 end
