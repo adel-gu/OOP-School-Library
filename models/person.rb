@@ -5,8 +5,8 @@ require_relative 'rental'
 
 class Person < Nameable
   # getters and setters
-  attr_reader :id, :rentals
-  attr_accessor :name, :age
+  attr_reader :id
+  attr_accessor :name, :age, :rentals
 
   # Constructor
   def initialize(age, name = 'Unkown', parent_permission: true)
