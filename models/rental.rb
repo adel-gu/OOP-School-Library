@@ -1,17 +1,16 @@
 class Rental
   # Getter and Setter
-  attr_accessor :date, :book
+  attr_reader :book, :person
+  attr_accessor :date
 
   # Constractor
   def initialize(date, book, person)
     @date = date
-    @book  = book
-    @person = person
-  end
 
-  # associate to a book
-  def book=(book)
-    @book = book
-    book.rentals.push(self) unless book.rentals.inclued?(self)
+    @book  = book
+    book.rentals << self unless book.rentals.inclued?(self)
+
+    @person = person
+    person.rentals << self unless person.rentals.inclued?(self)
   end
 end
