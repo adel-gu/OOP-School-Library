@@ -9,9 +9,4 @@ class Book
     @rentals = []
   end
 
-  # Adding rental
-  def add_rental(rental)
-    @rentals.push(rental) unless @rentals.inclued?(rental)
-    rental.book = self
-  end
 end

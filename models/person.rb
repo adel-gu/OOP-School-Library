@@ -34,8 +34,4 @@ class Person < Nameable
     @name
   end
 
-  # Add rentals method
-  def add_rental(rental)
-    @rentals.push(rental) unless @rentals.inclued?(rental)
-  end
 end
