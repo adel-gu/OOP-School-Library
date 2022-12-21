@@ -1,6 +1,7 @@
 require_relative 'nameable'
 require_relative 'capitalize_decorator'
 require_relative 'trimmer_decorator'
+require_relative 'rental'
 
 class Person < Nameable
   # getters and setters
@@ -32,5 +33,10 @@ class Person < Nameable
   # Correct the person name method
   def correct_name
     @name
+  end
+
+  # Add rentals method
+  def add_rental(date, book)
+    Rental.new(date, book, self)
   end
 end
