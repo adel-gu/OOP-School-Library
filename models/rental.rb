@@ -7,7 +7,7 @@ class Rental
   def initialize(date, book, person)
     @date = date
 
-    @book  = book
+    @book = book
     book.rentals << self unless book.rentals.inclued?(self)
 
     @person = person
