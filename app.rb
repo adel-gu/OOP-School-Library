@@ -29,6 +29,12 @@ class App
     end
   end
 
+  # get the user input
+  def get_input
+    option = gets.chomp
+    return "#{option}"
+  end
+
 
 end
 
