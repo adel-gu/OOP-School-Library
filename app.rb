@@ -1,6 +1,7 @@
 require_relative './models/student'
 require_relative './models/teacher'
 require_relative './models/book'
+require_relative './models/rental'
 
 class App
 
@@ -92,6 +93,15 @@ class App
     # Create the book object and add it to the books list
     @books.push(Book.new(title, author))
   end
+
+  # Create a rental
+  def create_rental(book, person)
+    print "Date: "
+    date = gets.chomp
+
+    # Create the book object and add it to the books list
+    Rental.new(date, book, person)
+  end
 end
 
 # Main
@@ -99,7 +109,6 @@ def main
   app = App.new
   app.run()
   user_input = app.get_input()
-  app.create_person
 end
 
 main()
