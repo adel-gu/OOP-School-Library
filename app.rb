@@ -1,5 +1,6 @@
 require_relative './models/student'
 require_relative './models/teacher'
+require_relative './models/book'
 
 class App
 
@@ -45,6 +46,7 @@ class App
     puts @persons
   end
 
+  # Create a person
   def create_person
     print "Do you want to create a student (1) or a teacher (2)? [Input the nummber]: "
     case gets.chomp
@@ -77,6 +79,18 @@ class App
         # Create a student and push it to persons array
         @persons.push(Teacher.new(specialization, age, name))
     end
+  end
+
+  # Create a Book
+  def create_book
+    print "Title: "
+    title = gets.chomp
+
+    print "Author: "
+    author = gets.chomp
+
+    # Create the book object and add it to the books list
+    @books.push(Book.new(title, author))
   end
 end
 
