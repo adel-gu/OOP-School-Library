@@ -35,6 +35,16 @@ class App
     return "#{option}"
   end
 
+  # Print out all books
+  def list_all_books
+    puts @books
+  end
+
+  # Print out all books
+  def list_all_persons
+    puts @persons
+  end
+
 
 end
 
