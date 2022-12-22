@@ -29,55 +29,7 @@ class App
     end
   end
 
-  # get the user input
-  def get_input
-    option = gets.chomp
-    return "#{option}"
-  end
 
-  # Print out all books
-  def list_all_books
-    puts @books
-  end
-
-  # Print out all books
-  def list_all_persons
-    puts @persons
-  end
-
-  def create_person
-    print "Do you want to create a student (1) or a teacher (2)? [Input the nummber]: "
-    case gets.chomp
-      when "1"
-        print "Age: "
-        age = gets.chomp
-
-        print "Name: "
-        name = gets.chomp
-
-        print "Has parent permission? [Y/N]: "
-        case (gets.chomp).downcase
-          when "y" then parent_permission = true
-          when "n" then parent_permission = false
-        end
-
-        # Create a student and push it to persons array
-        @persons.push(Student.new(age, name, parent_permission))
-
-      when "2"
-        print "Age: "
-        age = gets.chomp
-
-        print "Name: "
-        name = gets.chomp
-
-        print "Specialization: "
-        specialization = gets.chomp
-
-        # Create a student and push it to persons array
-        @persons.push(Teacher.new(specialization, age, name))
-    end
-  end
 end
 
 # Main
