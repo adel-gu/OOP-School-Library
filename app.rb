@@ -102,6 +102,11 @@ class App
     # Create the book object and add it to the books list
     Rental.new(date, book, person)
   end
+
+  # List all rentals for a given person id
+  def rentals_of_person(id)
+    @persons.select {|person| person.id == id}
+  end
 end
 
 # Main
