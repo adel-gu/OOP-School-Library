@@ -2,8 +2,13 @@ require_relative './models/student'
 require_relative './models/teacher'
 require_relative './models/book'
 require_relative './models/rental'
+require_relative './modules/savebook'
+require_relative './modules/Savepeople'
 
 class App
+  include Savebook
+  include Savepeople
+
   def initialize
     # Print commands
     @cmd = {
@@ -15,12 +20,6 @@ class App
       '6': 'List all rentals for a given person id',
       '7': 'Exit'
     }
-
-    # List of books
-    @books = []
-
-    # List of people
-    @people = []
   end
 
   # display commands
@@ -32,28 +31,28 @@ class App
 
   # Print out all books
   def list_all_books
-    if @books.empty?
+    if get_books.empty?
       puts 'Please insert books first!!'
     else
-      @books.each_with_index do |book, index|
-        puts "#{index}) Title: #{book.title}, Author: #{book.author}}"
+      get_books.each_with_index do |book, index|
+        puts "#{index}) Title: #{book["title"]}, Author: #{book["author"]}"
       end
     end
   end
 
   # Print out all books
   def list_all_people
-    if @people.empty?
+    if get_people.empty?
       puts 'Please insert people first!!'
     else
-      @people.each do |person|
+      get_people.each do |person|
         puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
       end
     end
   end
 
   def list_all_person_with_numbers
-    @people.each_with_index do |person, index|
+    get_people.each_with_index do |person, index|
       puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
   end
@@ -74,7 +73,9 @@ class App
     end
 
     # Create a student and push it to people array
-    @people.push(Student.new('11', age, name, parent_permission: parent_permission))
+    student = Student.new('11', age, name, parent_permission: true)
+    # save_person(student)
+    p student.parent_permission
   end
 
   # Create teacher
@@ -89,7 +90,7 @@ class App
     specialization = gets.chomp
 
     # Create a student and push it to people array
-    @people.push(Teacher.new(specialization, age, name))
+    save_person(Teacher.new(specialization, age, name))
   end
 
   # Create a person
@@ -115,8 +116,8 @@ class App
     print 'Author: '
     author = gets.chomp
 
-    # Create the book object and add it to the books list
-    @books.push(Book.new(title, author))
+    # Create the book object and add it to the books database
+    save_book(Book.new(title, author))
 
     # Success message
     puts 'Book Created successfully'
